@@ -5,7 +5,7 @@ module.exports = (type, schema) => async (req, res, next) => {
     req[type] = schemaValue;
     next();
   } catch (error) {
-    error.message = error.message.replace('"', '');
+    error.message = error.message.replace(/"/g, '');
     next(error);
   }
 };
